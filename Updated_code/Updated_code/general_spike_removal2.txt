@@ -1,0 +1,21 @@
+GENERAL SPIKE REMOVAL CODE
+Useful files: general_spike_removal2.m
+	      Polar2cart1.m
+
+This code removes spikes from an image (Fundamental, Ultraharmonic or both). It works in the following way:
+1) Generates a fundamental and ultraharmonic image, in its 'spiked' form. 
+2) Prompts the user to select the desired function, i.e; remove spikes in a Fundamental image, an Ultraharmonic image, 
+   or both the Fundamental and Ultraharmonic image.
+3) Prompts the user to select the unwanted region. This is the region surrounding the transducer, and is a product of
+   the main bang. It contains no useful information and is therefore excluded in the subsequent computations
+4) Prompts the user to select a spike. This returns the spike value and is useful in distinguishing the spike from 
+   the background region and/or other artifacts that may be present in the image. 
+5) Prompts the user to select the ROI, which is the region whose values are not altered during the spike removal process.
+   This region usually contains information that is of interest to the user.
+6) Prompts the user to select the background region. The background region selected forms the basis upon which the threshold
+   is decided. The threshold in this case is used to distinguish the spike from a value that is not a spike. Any value
+    crossing this threshold is assumed to be a spike, and is thus replaced by the average of the surrounding background
+    region values.
+7) Prompts the user to select a region in the background for the CTR computation, whose formula is as follows:
+                 CTR = ROI - background
+8) Produces an image with spikes removed and the unwanted middle region replaced with a matrix of zeros(black in color)
